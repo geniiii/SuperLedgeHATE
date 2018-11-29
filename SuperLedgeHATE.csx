@@ -67,8 +67,9 @@ static void ShuffleOnlySelected<T>(this IList<T> list, IList<int> selected) {
 	});
 }
 
-/*List<int> sprites = new List<int>();
-for(int i = 0; i < Data.Sprites.Count; i++)
+/* no-chizuru stuff
+List<int> sprites = new List<int>();
+for (int i = 0; i < Data.Sprites.Count; i++)
 {
 	var sprite = Data.Sprites[i];
 	if(sprite.Name.Content.StartsWith("spr_chizuru"))
@@ -103,14 +104,16 @@ for (int i = 0; i < Data.Options.Constants.Count; i++) {
 
 for (int i = 0; i < Data.Strings.Count; i++) {
 	// not adding underscores to some because of "background13" and "timeline4"
-	if (!names.Exists(e => e.EndsWith(Data.Strings[i].Content)) && Data.Strings[i].Content.StartsWithArray(new string[] { "gml_", "rm_", "obj_", "snd_", "time", "fnt_", "scr_", "path_", "back", "spr_", "soulOfC", "SuperLedgehop" })) {
+	string[] withArray = new string[] { "gml_", "rm_", "obj_", "snd_", "time", "fnt_", "scr_", "path_", "back", "spr_", "soulOfC", "SuperLedgehop" };
+
+	if (!names.Exists(e => e.EndsWith(Data.Strings[i].Content)) && Data.Strings[i].Content.StartsWithArray(withArray)) {
 		strings.Add(i);
 	}
 }
 
 Data.Strings.ShuffleOnlySelected(strings, StringSwap);
 
-using(StreamWriter writer = new StreamWriter("./lastSeed")) {
+using (StreamWriter writer = new StreamWriter("./lastSeed")) {
 	writer.WriteLine(Convert.ToString(seed));
 }
 
